@@ -8,24 +8,19 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class Product {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    //logs the time when the product was created
+    //logs the time when the category was created
     @Column(name = "created_at")
     @CreationTimestamp
     public LocalDateTime createdAt;
 
-    //logs the time when a value of the product is changed
+    //logs the time when a value of the category is changed
     @Column(name = "updated_at")
     @CreationTimestamp
     public LocalDateTime updatedAt;
 
-    //main info about the product
-    private String name;
-    private String description;
-    private Double price;
-    private Integer quantity;
+    private String categoryName;
 }
