@@ -28,4 +28,9 @@ public class Product {
     private String description;
     private Double price;
     private Integer quantity;
+
+    //we connect the tables(entities) product and category
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 }
