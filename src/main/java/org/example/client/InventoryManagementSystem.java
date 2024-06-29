@@ -1,13 +1,18 @@
 package org.example.client;
 
 import org.example.dto.ProductDTO;
+import org.example.service.ProductService;
 
 import java.util.Scanner;
 
 public class InventoryManagementSystem {
+
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         createProduct(scanner);
+
+
     }
 
     public static void createProduct(Scanner scanner){
@@ -32,5 +37,8 @@ public class InventoryManagementSystem {
         productDTO.setQuantity(quantity);
         productDTO.setCategoryId(categoryId);
         productDTO.setDescription(description);
+
+        ProductService productService = new ProductService();
+        productService.createProduct(productDTO);
     }
 }
