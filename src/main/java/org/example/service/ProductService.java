@@ -8,6 +8,9 @@ import org.example.dao.ProductDAOImplementation;
 import org.example.dto.ProductDTO;
 import org.hibernate.SessionFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductService {
     private final SessionFactory sessionFactory = HibernateConfig.getSessionFactory();
     private final ProductDAO productDAO = new ProductDAOImplementation(sessionFactory);
@@ -17,5 +20,9 @@ public class ProductService {
         Product product = ProductConverter.convertToEntity(productDTO);
 //        System.out.println(product); //test the conversion
         productDAO.save(product);
+    }
+
+    public List<Product> getAllProducts()  {
+        return productDAO.findAll();
     }
 }

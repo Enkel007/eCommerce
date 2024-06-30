@@ -1,18 +1,30 @@
 package org.example.client;
 
+import org.example.Entity.Product;
 import org.example.dto.ProductDTO;
 import org.example.service.ProductService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class InventoryManagementSystem {
 
 
     public static void main(String[] args) throws Exception {
+
         Scanner scanner = new Scanner(System.in);
-        createProduct(scanner);
 
+        while (true) {
+            System.out.println("Please enter 1 if you want to create a product or enter 2 if you want to view all products.");
+            int choice = scanner.nextInt();
 
+            if(choice == 1) {
+                createProduct(scanner);
+            } else {
+                displayAllProducts();
+            }
+        }
     }
 
     public static void createProduct(Scanner scanner) throws Exception {
@@ -40,5 +52,16 @@ public class InventoryManagementSystem {
 
         ProductService productService = new ProductService();
         productService.createProduct(productDTO);
+    }
+
+
+    private static void displayAllProducts() {
+        ProductService productService = new ProductService();
+        List<Product> products = productService.getAllProducts();
+
+        for (Product product : products) {
+            System.out.println(product);
+        }
+
     }
 }

@@ -37,8 +37,10 @@ public class ProductDAOImplementation implements ProductDAO {
         return null;
     }
 
+
     @Override
     public List<Product> findAll() {
-        return List.of();
+        Session session = sessionFactory.openSession();
+        return session.createQuery("SELECT a FROM Product a", Product.class).getResultList();
     }
 }
