@@ -8,14 +8,14 @@ import java.util.Scanner;
 public class InventoryManagementSystem {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         createProduct(scanner);
 
 
     }
 
-    public static void createProduct(Scanner scanner){
+    public static void createProduct(Scanner scanner) throws Exception {
         System.out.println("Please enter the name of the product: ");
         String name = scanner.next();
 
