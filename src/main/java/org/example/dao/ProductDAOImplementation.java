@@ -29,12 +29,15 @@ public class ProductDAOImplementation implements ProductDAO {
 
     @Override
     public void delete(Long id) {
-
+        Session session = sessionFactory.openSession();
+        session.delete(session.load(Product.class, id));
     }
 
     @Override
     public Product findById(Long id) {
-        return null;
+        Session session = sessionFactory.openSession();
+        Product product = (Product) session.get(Product.class, id);
+        return product;
     }
 
 

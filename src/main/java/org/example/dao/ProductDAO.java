@@ -8,6 +8,8 @@ public interface ProductDAO {
     void save(Product product) throws Exception;
 //    void update(Product product);
     void delete(Long id);
+
     Product findById(Long id);
+
     List<Product> findAll();
 }
