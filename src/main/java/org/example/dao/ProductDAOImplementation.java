@@ -30,7 +30,10 @@ public class ProductDAOImplementation implements ProductDAO {
     @Override
     public void delete(Long id) {
         Session session = sessionFactory.openSession();
-        session.delete(session.load(Product.class, id));
+        Transaction transaction = session.beginTransaction();
+        Product product = findById(id);
+        session.delete(product);
+        transaction.commit();
     }
 
     @Override

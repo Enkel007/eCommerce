@@ -22,8 +22,10 @@ public class InventoryManagementSystem {
             System.out.println("Select an option from the menu: ");
             System.out.println("1 - Add product");
             System.out.println("2 - See all products in the inventory");
-            System.out.println("3 - Add category");
-            System.out.println("4 - See all categories");
+            System.out.println("3 - Delete product");
+            System.out.println("4 - Find product by id");
+            System.out.println("5 - Add category");
+            System.out.println("6 - See all categories");
             System.out.println("Enter 0 if you want to exit the application.");
             int choice = scanner.nextInt();
 
@@ -37,9 +39,15 @@ public class InventoryManagementSystem {
                     displayAllProducts();
                     break;
                 case 3:
-                    createCategory(scanner);
+                    deleteProduct(scanner);
                     break;
                 case 4:
+                    findProductById(scanner);
+                    break;
+                case 5:
+                    createCategory(scanner);
+                    break;
+                case 6:
                     displayAllCategories();
                     break;
             }
@@ -81,6 +89,24 @@ public class InventoryManagementSystem {
         for (Product product : products) {
             System.out.println(product);
         }
+    }
+
+    private static void deleteProduct(Scanner scanner) throws Exception {
+        System.out.println("Please enter the id of the product: ");
+        Long id = scanner.nextLong();
+
+        ProductService productService = new ProductService();
+        productService.deleteProduct(id);
+    }
+
+    private static Product findProductById(Scanner scanner) throws Exception {
+        System.out.println("Please enter the id of the product: ");
+        Long id = scanner.nextLong();
+
+        ProductService productService = new ProductService();
+        Product foundProduct = productService.findById(id);
+        System.out.println(foundProduct);
+        return foundProduct;
     }
 
     private static void createCategory(Scanner scanner) throws Exception {
