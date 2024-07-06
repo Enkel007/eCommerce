@@ -12,7 +12,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity(name = "order_table")
+@Entity(name = "orders")
 @Getter
 @Setter
 public class Order {
@@ -24,7 +24,7 @@ public class Order {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany(mappedBy = "order_table")
+    @OneToMany(mappedBy = "orders")
     private List<OrderItems> orderItemsList;
 
     private Double total;
@@ -35,7 +35,6 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "order_status")
-    @ColumnDefault("NEW")
     private OrderStatusEnum orderStatus;
 
     @Column(name = "created_at")

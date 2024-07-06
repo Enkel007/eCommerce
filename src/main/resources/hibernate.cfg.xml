@@ -24,6 +24,9 @@
         <mapping class="org.example.Entity.Product" />
 
         <mapping class="org.example.Entity.Category" />
+        <mapping class="org.example.Entity.Client" />
+        <mapping class="org.example.Entity.Order" />
+        <mapping class="org.example.Entity.OrderItems" />
     </session-factory>
 </hibernate-configuration>
 

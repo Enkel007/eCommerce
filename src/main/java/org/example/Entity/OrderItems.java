@@ -1,6 +1,7 @@
 package org.example.Entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Entity(name = "order_items")
 @Getter
 @Setter
+@NoArgsConstructor
 public class OrderItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +26,7 @@ public class OrderItems {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private Order order;
+    private Order orders;
 
     @Column(name = "sub_total")
     private Double subTotal;
@@ -35,4 +37,9 @@ public class OrderItems {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public OrderItems(Long productId, Integer quantity) {
+        this.product = product;
+        this.quantity = quantity;
+    }
 }
