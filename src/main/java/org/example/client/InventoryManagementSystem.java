@@ -13,7 +13,6 @@ import java.util.Scanner;
 
 public class InventoryManagementSystem {
 
-
     public static void main(String[] args) throws Exception {
 
         Scanner scanner = new Scanner(System.in);
@@ -80,7 +79,6 @@ public class InventoryManagementSystem {
         ProductService productService = new ProductService();
         productService.createProduct(productDTO);
     }
-
 
     private static void displayAllProducts() {
         ProductService productService = new ProductService();
